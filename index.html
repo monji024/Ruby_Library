@@ -2,11 +2,11 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Library Ruby | کتابخانه روبی</title>
 <link rel="stylesheet" href="css/style.css">
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -16,20 +16,35 @@
 <h2><i class="fas fa-gem"></i> <span id="sidebarTitle">دسته‌بندی‌ها</span></h2>
 </div>
 <ul class="category-list" id="categoryList"></ul>
+<div class="sidebar-footer">
+<a href="https://t.me/RubyCode1" target="_blank" class="telegram-link">
+<i class="fab fa-telegram-plane"></i>
+<span>RubyCode1</span>
+</a>
+</div>
 </aside>
 <main class="main" id="main">
 <div class="top-bar">
-<div class="title">
+<div class="title" id="homeButton" style="cursor:pointer;">
 <h1>Library Ruby</h1>
 <p id="subtitle">مجموعه‌ای از بهترین کتابخانه‌های روبی</p>
 </div>
 <div class="controls">
 <button class="btn-icon" id="langToggle"><i class="fas fa-language"></i> <span id="langText">English</span></button>
-<button class="btn-icon" id="themeToggle"><i class="fas fa-moon"></i> <span id="themeText">تاریک</span></button>
+<button class="btn-icon" id="themeToggle"><i class="fas fa-moon" id="themeIcon"></i> <span id="themeText">تاریک</span></button>
 <button class="btn-icon menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
 </div>
 </div>
-<div id="contentArea" class="libraries-section"><div class="empty">یک دسته را انتخاب کنید</div></div>
+<div id="contentArea" class="libraries-section"></div>
+<div class="footer" id="footer">
+<div class="footer-content">
+<div class="footer-logo"><i class="fas fa-gem"></i> Library Ruby</div>
+<div class="footer-telegram">
+<a href="https://t.me/RubyCode1" target="_blank"><i class="fab fa-telegram-plane"></i> RubyCode1</a>
+</div>
+<div class="footer-copyright">Monji024</div>
+</div>
+</div>
 </main>
 </div>
 <script src="js/data.js"></script>
