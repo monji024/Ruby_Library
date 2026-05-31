@@ -43,7 +43,7 @@ const welcomeHtml = `
 <h2 class="welcome-title">${isFa ? "به Library Ruby خوش آمدی" : "Welcome to Library Ruby"}</h2>
 <p class="welcome-desc">${isFa ? "یه جایزه کامل از بهترین کتابخانه‌های روبی:) اینجا میتونی هر کتابخونه‌ای که برای پروژه‌ات نیاز داری پیدا کنی." : "A complete collection of the best Ruby libraries:) Here you can find any library you need for your project."}</p>
 <div class="welcome-tip">
-<p><i class="fas ${isFa ? 'fa-arrow-left' : 'fa-arrow-right'}"></i> ${isFa ? "از منوی سمت راست، دسته‌بندی مورد نظرتو انتخاب کن" : "Select a category from the menu on the right"}</p>
+<p><i class="fas ${isFa ? 'fa-arrow-left' : 'fa-arrow-right'}"></i> ${isFa ? "از منوی سمت چپ، دسته‌بندی مورد نظرتو انتخاب کن" : "Select a category from the menu on the right"}</p>
 </div>
 </div>
 `;
