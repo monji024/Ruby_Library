@@ -1,5 +1,4 @@
 let currentLang = "fa";
-let currentTheme = "light";
 let currentCategoryIndex = 0;
 let searchQuery = "";
 
@@ -97,30 +96,33 @@ currentLang = currentLang === "fa" ? "en" : "fa";
 updateUIStrings();
 }
 
+function setTheme(theme) {
+if (theme === "dark") {
+document.body.classList.add("dark");
+themeTextSpan.innerText = (currentLang === "fa" ? "روشن" : "Light");
+localStorage.setItem("awesome-ruby-theme", "dark");
+} else {
+document.body.classList.remove("dark");
+themeTextSpan.innerText = (currentLang === "fa" ? "تاریک" : "Dark");
+localStorage.setItem("awesome-ruby-theme", "light");
+}
+}
+
+function toggleTheme() {
+if (document.body.classList.contains("dark")) {
+setTheme("light");
+} else {
+setTheme("dark");
+}
+}
 
 function loadTheme() {
 const saved = localStorage.getItem("awesome-ruby-theme");
 if (saved === "dark") {
-currentTheme = "dark";
-document.body.classList.add("dark");
+setTheme("dark");
 } else {
-currentTheme = "light";
-document.body.classList.remove("dark");
+setTheme("light");
 }
-themeTextSpan.innerText = (currentLang === "fa" ? (currentTheme === "dark" ? "روشن" : "تاریک") : (currentTheme === "dark" ? "Light" : "Dark"));
-}
-
-
-function loadTheme() {
-const saved = localStorage.getItem("awesome-ruby-theme");
-if (saved === "dark") {
-currentTheme = "dark";
-document.body.classList.add("dark");
-} else {
-currentTheme = "light";
-document.body.classList.remove("dark");
-}
-themeTextSpan.innerText = (currentLang === "fa" ? (currentTheme === "dark" ? "روشن" : "تاریک") : (currentTheme === "dark" ? "Light" : "Dark"));
 }
 
 function openSidebar() {
