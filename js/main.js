@@ -81,7 +81,7 @@ function updateUIStrings() {
 sidebarTitleSpan.innerText = currentLang === "fa" ? "دسته‌بندی‌ها" : "Categories";
 subtitleSpan.innerText = currentLang === "fa" ? "مجموعه‌ای از بهترین کتابخانه‌های روبی" : "A curated collection of awesome Ruby libraries";
 langTextSpan.innerText = currentLang === "fa" ? "English" : "فارسی";
-document.querySelector(".title h1").innerText = "Awesome Ruby";
+document.querySelector(".title h1").innerText = "Library Ruby";
 document.body.classList.remove("fa-lang", "en-lang");
 document.body.classList.add(currentLang === "fa" ? "fa-lang" : "en-lang");
 if (window.innerWidth <= 768) {
