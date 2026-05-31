@@ -13,7 +13,10 @@ const langTextSpan = document.getElementById("langText");
 const themeTextSpan = document.getElementById("themeText");
 const sidebar = document.getElementById("sidebar");
 const menuToggle = document.getElementById("menuToggle");
-const mainEl = document.getElementById("main");
+
+let overlay = document.createElement("div");
+overlay.className = "overlay";
+document.body.appendChild(overlay);
 
 function renderSidebar() {
 categoryListEl.innerHTML = "";
@@ -30,7 +33,10 @@ li.addEventListener("click", () => {
 currentCategoryIndex = idx;
 renderSidebar();
 renderContent();
-if (window.innerWidth <= 768) sidebar.classList.remove("open");
+if (window.innerWidth <= 768) {
+sidebar.classList.remove("open");
+overlay.classList.remove("show");
+}
 });
 categoryListEl.appendChild(li);
 });
@@ -55,10 +61,14 @@ html += `<div class="empty">کتابخانه‌ای یافت نشد</div>`;
 html += `<div class="library-grid">`;
 items.forEach(item => {
 const desc = currentLang === "fa" ? item.descFa : item.descEn;
+let shortDesc = desc;
+if (desc.length > 200 && window.innerWidth <= 768) {
+shortDesc = desc.substring(0, 150) + "...";
+}
 html += `
 <div class="library-card">
-<div class="library-name"><a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.name} <i class="fas fa-external-link-alt" style="font-size:0.7rem"></i></a></div>
-<div class="library-desc">${desc}</div>
+<div class="library-name"><a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.name} <i class="fas fa-external-link-alt" style="font-size:0.65rem"></i></a></div>
+<div class="library-desc">${shortDesc}</div>
 </div>
 `;
 });
@@ -71,11 +81,12 @@ function updateUIStrings() {
 sidebarTitleSpan.innerText = currentLang === "fa" ? "دسته‌بندی‌ها" : "Categories";
 subtitleSpan.innerText = currentLang === "fa" ? "مجموعه‌ای از بهترین کتابخانه‌های روبی" : "A curated collection of awesome Ruby libraries";
 langTextSpan.innerText = currentLang === "fa" ? "English" : "فارسی";
-document.querySelector(".title h1").innerText = "Library Ruby";
+document.querySelector(".title h1").innerText = "Awesome Ruby";
 document.body.classList.remove("fa-lang", "en-lang");
 document.body.classList.add(currentLang === "fa" ? "fa-lang" : "en-lang");
 if (window.innerWidth <= 768) {
 sidebar.classList.remove("open");
+overlay.classList.remove("show");
 }
 renderSidebar();
 renderContent();
@@ -105,18 +116,35 @@ document.body.classList.remove("dark");
 themeTextSpan.innerText = (currentLang === "fa" ? (currentTheme === "dark" ? "روشن" : "تاریک") : (currentTheme === "dark" ? "Light" : "Dark"));
 }
 
+function openSidebar() {
+sidebar.classList.add("open");
+overlay.classList.add("show");
+}
+
+function closeSidebar() {
+sidebar.classList.remove("open");
+overlay.classList.remove("show");
+}
+
 if (menuToggle) {
 menuToggle.addEventListener("click", (e) => {
 e.stopPropagation();
-sidebar.classList.toggle("open");
+if (sidebar.classList.contains("open")) {
+closeSidebar();
+} else {
+openSidebar();
+}
 });
 }
 
-document.addEventListener("click", function(event) {
-if (window.innerWidth <= 768) {
-if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
-sidebar.classList.remove("open");
-}
+overlay.addEventListener("click", closeSidebar);
+
+window.addEventListener("resize", function() {
+if (window.innerWidth > 768) {
+closeSidebar();
+renderContent();
+} else {
+renderContent();
 }
 });
 
