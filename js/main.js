@@ -97,12 +97,19 @@ currentLang = currentLang === "fa" ? "en" : "fa";
 updateUIStrings();
 }
 
-function toggleTheme() {
-currentTheme = currentTheme === "light" ? "dark" : "light";
-document.body.classList.toggle("dark", currentTheme === "dark");
-themeTextSpan.innerText = (currentLang === "fa" ? (currentTheme === "dark" ? "روشن" : "تاریک") : (currentTheme === "dark" ? "Light" : "Dark"));
-localStorage.setItem("awesome-ruby-theme", currentTheme);
+
+function loadTheme() {
+const saved = localStorage.getItem("awesome-ruby-theme");
+if (saved === "dark") {
+currentTheme = "dark";
+document.body.classList.add("dark");
+} else {
+currentTheme = "light";
+document.body.classList.remove("dark");
 }
+themeTextSpan.innerText = (currentLang === "fa" ? (currentTheme === "dark" ? "روشن" : "تاریک") : (currentTheme === "dark" ? "Light" : "Dark"));
+}
+
 
 function loadTheme() {
 const saved = localStorage.getItem("awesome-ruby-theme");
