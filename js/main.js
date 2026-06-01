@@ -15,24 +15,20 @@ const sidebar = document.getElementById("sidebar");
 const menuToggle = document.getElementById("menuToggle");
 const homeButton = document.getElementById("homeButton");
 const searchInput = document.getElementById("searchInput");
-
-let overlay = document.createElement("div");
-overlay.className = "overlay";
-document.body.appendChild(overlay);
+const overlay = document.getElementById("overlay");
 
 function showWelcomeScreen() {
     const isFa = currentLang === "fa";
-    const welcomeHtml = `
+    contentArea.innerHTML = `
         <div class="welcome-screen">
             <div class="welcome-icon"><i class="fas fa-gem"></i></div>
             <h2 class="welcome-title">${isFa ? "به Library Ruby خوش آمدی" : "Welcome to Library Ruby"}</h2>
-            <p class="welcome-desc">${isFa ? "(: بهترین کتابخانه‌های روبی رو اینجا پیدا کن" : "Find the best Ruby libraries here:)"}</p>
+            <p class="welcome-desc">${isFa ? ":) بهترین کتابخونه های روبی رو اینجا پیدا کن" : "Find the best Ruby libraries here :)"}</p>
             <div class="welcome-tip">
-                <p><i class="fas ${isFa ? 'fa-arrow-left' : 'fa-arrow-right'}"></i> ${isFa ? "از منوی چپ, دسته رو انتخاب کن" : "Select a category from the menu"}</p>
+                <p><i class="fas ${isFa ? 'fa-arrow-left' : 'fa-arrow-right'}"></i> ${isFa ? "از منوی چپ دسته رو انتخاب کن" : "Select a category from the menu"}</p>
             </div>
         </div>
     `;
-    contentArea.innerHTML = welcomeHtml;
 }
 
 function getAllResultsFromSearch() {
@@ -222,17 +218,30 @@ function handleSearch() {
 if (menuToggle) {
     menuToggle.addEventListener("click", (e) => {
         e.stopPropagation();
-        sidebar.classList.contains("open") ? closeSidebar() : openSidebar();
+        if (sidebar.classList.contains("open")) {
+            closeSidebar();
+        } else {
+            openSidebar();
+        }
     });
 }
 
-overlay.addEventListener("click", closeSidebar);
-homeButton.addEventListener("click", goHome);
-if (searchInput) searchInput.addEventListener("input", handleSearch);
+if (overlay) {
+    overlay.addEventListener("click", closeSidebar);
+}
 
-window.addEventListener("resize", () => {
-    if (window.innerWidth > 768) closeSidebar();
-    else renderContent();
+if (homeButton) {
+    homeButton.addEventListener("click", goHome);
+}
+
+if (searchInput) {
+    searchInput.addEventListener("input", handleSearch);
+}
+
+window.addEventListener("resize", function() {
+    if (window.innerWidth > 768) {
+        closeSidebar();
+    }
 });
 
 loadTheme();
