@@ -109,16 +109,17 @@ transition: transform 0.3s ease;
 box-shadow: 0 0 20px rgba(0,0,0,0.1);
 display: flex;
 flex-direction: column;
+justify-content: space-between;
 }
 .category-list {
 list-style: none;
 padding: 0 0.5rem;
-flex: 1;
 }
 .sidebar-footer {
 padding: 1rem 1.5rem;
 border-top: 1px solid var(--border);
 margin-top: auto;
+width: 100%;
 }
 .category-item {
 padding: 0.6rem 1.2rem;
