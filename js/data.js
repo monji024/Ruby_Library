@@ -1,4 +1,3 @@
-// داده‌های Awesome Ruby با توضیحات فارسی
 const categoriesData = [
   {
     "en": "Admin Interface",
