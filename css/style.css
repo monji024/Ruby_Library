@@ -96,23 +96,29 @@ z-index: 999;
 .overlay.show {
 display: block;
 }
-.sidebar-header {
-padding: 0 1.5rem 1.2rem 1.5rem;
-border-bottom: 1px solid var(--border);
-margin-bottom: 1rem;
-}
-.sidebar-header h2 {
-font-size: 1.4rem;
-font-weight: 600;
-}
-.sidebar-header h2 i {
-color: var(--primary);
-margin-left: 8px;
+.sidebar {
+width: 280px;
+background: var(--sidebar-bg);
+position: fixed;
+top: 0;
+bottom: 0;
+overflow-y: auto;
+padding: 2rem 0 0 0;
+z-index: 1000;
+transition: transform 0.3s ease;
+box-shadow: 0 0 20px rgba(0,0,0,0.1);
+display: flex;
+flex-direction: column;
 }
 .category-list {
 list-style: none;
 padding: 0 0.5rem;
 flex: 1;
+}
+.sidebar-footer {
+padding: 1rem 1.5rem;
+border-top: 1px solid var(--border);
+margin-top: auto;
 }
 .category-item {
 padding: 0.6rem 1.2rem;
